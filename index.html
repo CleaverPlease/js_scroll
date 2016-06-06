@@ -34,11 +34,17 @@
 		{
 			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
-			if(character_counter == words[word_counter].length)
+			//added an if statement to check for space inside string.
+			if(words[word_counter][character_counter] == ' '){
+				el.innerHTML = el.innerHTML+'&nbsp';
+				character_counter ++;
+			}
+
+			if(character_counter == words[word_counter].length + 1) //added a + 1 to grab the last letter.
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
-				el.innerHTML = '';  //set the html to be blank
+				el.innerHTML = '' ;  //set the html to be blank
 
 				//if we're displaying the last word, go back to the first word
 				if(word_counter == words.length)
@@ -46,7 +52,7 @@
 			}
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,500);
 
 	</script>
 
